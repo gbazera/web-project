@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+@import url('https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css');
 
 $primary: royalblue;
 $secondary: #e14141;
@@ -14,9 +15,31 @@ $text: #212329;
 }
 
 body{
-    padding: 40px 480px;
     background-color: $bg-darker;
+    overflow-x: hidden;
 }
+
+body.active{
+    overflow: hidden;
+}
+
+.holder{
+    padding: 40px 480px 0 480px;
+}
+
+/*
+footer{
+    margin-top: 240px;
+    height: 10vh;
+    background-color: $text;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+}
+*/
 
 nav{
     display: flex;
@@ -44,6 +67,7 @@ nav{
     .nav-links{
         display: flex;
         list-style: none;
+        align-items: center;
 
         li{
             margin-right: 20px;
@@ -52,6 +76,25 @@ nav{
         li:last-child{
             margin-right: 0;
         }
+    }
+}
+
+.welcome{
+    color: $text;
+    font-size: 16px;
+    position: relative;
+    margin-top: 40px;
+
+    span{
+        font-weight: bold;
+    }
+
+    i{
+        position: absolute;
+        bottom: -4px;
+        color: $secondary;
+        margin-left: 5px;
+        font-size: 24px;
     }
 }
 
@@ -165,7 +208,7 @@ section.announcements .list{
         align-items: center;
 
         .title{
-            font-size: 32px;
+            font-size: 24px;
             font-weight: bold;
         }
 
@@ -244,7 +287,7 @@ section.announcements .list{
     margin-top: 40px;
 
     .main-heading{
-        font-size: 32px;
+        font-size: 24px;
         text-transform: uppercase;
         font-weight: bold;
     }
@@ -327,4 +370,91 @@ section.announcements .list{
 .btn[disabled]{
     cursor: not-allowed;
     opacity: .8 !important;
+}
+
+.burger{
+    font-size: 24px;
+    border: none;
+    background-color: transparent;
+    color: $text;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+}
+
+@media screen and (max-width: 1600px) {
+    .holder{
+        padding: 40px 240px 0 240px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .holder{
+        padding: 40px 160px 0 160px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    section{
+        .title{
+            font-size: 16px !important;
+        }
+
+        .teacher{
+            font-size: 14px !important;
+        }
+    }
+
+    section.announcements .list{
+        display: flex;
+        flex-direction: column;
+
+        .item:hover{
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .holder{
+        padding: 40px 40px 0 40px;
+    }
+
+    .burger{
+        display: inline-block;
+        z-index: 6;
+    }
+
+    .logo{
+        z-index: 6;
+    }
+
+    nav{
+        .nav-links{
+            position: absolute;
+            height: 90vh;
+            width: 100%;
+            top: 10vh;
+            left: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: $bg-darker;
+            gap: 20px;
+            transition: left .3s;
+            padding: 0 80px;
+
+            li{
+                margin: 0;
+            }
+
+            a{
+                font-size: 24px;
+            }
+        }
+
+        .nav-links.active{
+            left: 0;
+            z-index: 5;
+        }
+    }
 }
